@@ -7,4 +7,12 @@
   </parent>
   <groupId>com.taotaosub.manage.pojo</groupId>
   <artifactId>taotao-manage-pojo-sub</artifactId>
+  <dependencies>
+		<!-- 添加JPA注解 -->
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+	</dependencies>
 </project>
