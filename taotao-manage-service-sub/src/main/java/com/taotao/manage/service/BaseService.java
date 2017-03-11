@@ -5,6 +5,8 @@ import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.github.abel533.entity.Example;
 import com.github.abel533.mapper.Mapper;
 import com.github.pagehelper.PageHelper;
@@ -13,7 +15,12 @@ import com.taotao.manage.pojo.BasePojo;
 
 public abstract class BaseService<T extends BasePojo> {
 	
-	public abstract Mapper<T> getMapper();
+	@Autowired
+	private Mapper<T> mapper;
+	
+	public Mapper<T> getMapper(){
+		return this.mapper;
+	}
 	
 	private Class<T> clazz;
 	
