@@ -84,3 +84,6 @@
 127.0.0.1 - - [11/Mar/2017:22:36:39 +0800] "GET /rest/item/cat?id=559 HTTP/1.0" 200 333 http-bio-8081-exec-7 27
 127.0.0.1 - - [11/Mar/2017:22:36:40 +0800] "GET /rest/item/param/560 HTTP/1.0" 404 949 http-bio-8081-exec-8 10
 127.0.0.1 - - [11/Mar/2017:22:38:58 +0800] "POST /rest/item HTTP/1.0" 201 - http-bio-8081-exec-9 215
+127.0.0.1 - - [11/Mar/2017:23:23:58 +0800] "POST /rest/item HTTP/1.0" 201 - http-bio-8081-exec-1 1446
+127.0.0.1 - - [11/Mar/2017:23:34:13 +0800] "POST /rest/item HTTP/1.0" 201 - http-bio-8081-exec-1 1319
+127.0.0.1 - - [11/Mar/2017:23:40:19 +0800] "POST /rest/item HTTP/1.0" 500 - http-bio-8081-exec-1 1467

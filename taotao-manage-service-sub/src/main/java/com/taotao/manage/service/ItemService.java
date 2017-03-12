@@ -47,6 +47,26 @@ public class ItemService extends BaseService<Item> {
 	 * @return
 	 */
 	public PageInfo<Item> queryItemListByPage(Integer page, Integer rows) {
+		
+		Item item = new Item();
+		item.setStatus(1);
+		PageInfo<Item> pageInfo = null;
+		try {
+			pageInfo = super.queryListByPage(item, page, rows, "updated desc");
+		} catch (IllegalArgumentException | IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		return pageInfo;
+	}
+
+	
+	/**
+	 * 根据条件分页查询商品
+	 * @param page
+	 * @param rows
+	 * @return
+	 */
+	/*public PageInfo<Item> queryItemListByPage(Integer page, Integer rows) {
 		PageHelper.startPage(page, rows);
 		//声明查询条件
 		Example example = new Example(Item.class);
@@ -56,6 +76,5 @@ public class ItemService extends BaseService<Item> {
 		List<Item> list = this.itemMapper.selectByExample(example);
 		PageInfo<Item> pageInfo = new PageInfo<Item>(list);
 		return pageInfo;
-	}
-
+	}*/
 }
