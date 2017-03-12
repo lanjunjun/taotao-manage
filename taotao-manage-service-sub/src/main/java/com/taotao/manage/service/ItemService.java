@@ -1,12 +1,8 @@
 package com.taotao.manage.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.github.abel533.entity.Example;
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.taotao.manage.mapper.ItemMapper;
 import com.taotao.manage.pojo.Item;

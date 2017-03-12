@@ -23,6 +23,10 @@
 		<!-- 后缀 -->
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="20000000"></property>
+	</bean>
 
 	<!-- 处理静态资源无法被springMVC处理的问题 -->
 	<!-- <mvc:default-servlet-handler/> -->
