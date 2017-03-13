@@ -80,7 +80,6 @@ public class PicUploadController {
 		picUploadResult.setError(0);
 		String picUrl = StringUtils.replace(StringUtils.substringAfter(filePath, this.propertiesService.IMAGE_FILE_PATH), "\\", "/");
 		picUploadResult.setUrl(this.propertiesService.IMAGE_BASE_URL+picUrl);
-		System.out.println(picUploadResult.getUrl());
 		String result = MAPPER.writeValueAsString(picUploadResult);
 		return result;
 	}
