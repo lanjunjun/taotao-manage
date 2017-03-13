@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.taotao.manage.service.PropertiesService;
 import com.taotao.manage.web.bean.PicUploadResult;
 
 @Controller
@@ -26,6 +28,10 @@ public class PicUploadController {
 	
 	//操作json对象
 	private static final ObjectMapper MAPPER = new ObjectMapper();
+	
+	@Autowired
+	private PropertiesService propertiesService;
+	
 	//图片格式
 	private static final String[] IMAGE_TYPE = {".jpg",".jpeg",".png",".bmp",".gif"};
 
@@ -72,8 +78,9 @@ public class PicUploadController {
 		}
 		//校验成功，error为0
 		picUploadResult.setError(0);
-		String picUrl = StringUtils.replace(StringUtils.substringAfter(filePath, "E:\\taotao-upload"), "\\", "/");
-		picUploadResult.setUrl("http://manage.taotao.com"+picUrl);
+		String picUrl = StringUtils.replace(StringUtils.substringAfter(filePath, this.propertiesService.IMAGE_FILE_PATH), "\\", "/");
+		picUploadResult.setUrl(this.propertiesService.IMAGE_BASE_URL+picUrl);
+		System.out.println(picUploadResult.getUrl());
 		String result = MAPPER.writeValueAsString(picUploadResult);
 		return result;
 	}
@@ -85,7 +92,7 @@ public class PicUploadController {
 	 */
 	//E:\taotao-upload\\image\\2017\\03\\12\\201703122119ssSSSSXXX.jpg
 	private String getFilePath(String originalFilename) {
-		String baseFolder = "E:\\taotao-upload"+File.separator+"image";
+		String baseFolder = this.propertiesService.IMAGE_FILE_PATH + File.separator+"image";
 		//拼接具体存放的地址
 		String fileFolder = baseFolder + File.separator + new DateTime().toString("yyyy") 
 				+ File.separator + new DateTime().toString("MM")
