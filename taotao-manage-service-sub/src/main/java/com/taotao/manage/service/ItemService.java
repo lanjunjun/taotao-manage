@@ -7,6 +7,7 @@ import com.github.pagehelper.PageInfo;
 import com.taotao.manage.mapper.ItemMapper;
 import com.taotao.manage.pojo.Item;
 import com.taotao.manage.pojo.ItemDesc;
+import com.taotao.manage.pojo.ItemParamItem;
 
 @Service
 public class ItemService extends BaseService<Item> {
@@ -16,13 +17,17 @@ public class ItemService extends BaseService<Item> {
 	
 	@Autowired
 	private ItemMapper itemMapper;
+	
+	@Autowired
+	private ItemParamItemService itemParamItemService;
 
 	/**
 	 * 保存商品数据
 	 * 
 	 * @param item
+	 * @param paramData 
 	 */
-	public void saveItem(Item item, String desc) {
+	public void saveItem(Item item, String desc, String paramData) {
 		// 保存商品
 		item.setId(null);
 		item.setStatus(1);
@@ -34,6 +39,12 @@ public class ItemService extends BaseService<Item> {
 		itemDesc.setItemDesc(desc);
 		this.itemDescService.save(itemDesc);
 
+		//保存商品規格參數
+		ItemParamItem itemParamItem = new ItemParamItem();
+		itemParamItem.setId(null);
+		itemParamItem.setItemId(item.getId());
+		itemParamItem.setParamData(paramData);
+		this.itemParamItemService.save(itemParamItem);
 	}
 
 	/**
@@ -53,6 +64,21 @@ public class ItemService extends BaseService<Item> {
 			e.printStackTrace();
 		}
 		return pageInfo;
+	}
+
+	/**
+	 * 更新商品
+	 * @param item
+	 * @param desc
+	 */
+	public void updateItem(Item item, String desc) {
+
+		super.updateByIdSelective(item);
+		ItemDesc itemDesc = new ItemDesc();
+		itemDesc.setItemId(item.getId());
+		itemDesc.setItemDesc(desc);
+		System.out.println(itemDesc);
+		this.itemDescService.updateByIdSelective(itemDesc);
 	}
 
 	

@@ -1,6 +1,9 @@
 E:\Java\workspace\taotao-manage-sub\taotao-manage-web-sub\src\main\java\com\taotao\manage\web\bean\PicUploadResult.java
+E:\Java\workspace\taotao-manage-sub\taotao-manage-web-sub\src\main\java\com\taotao\manage\converter\CallbackMappingJackson2HttpMessageConverter.java
 E:\Java\workspace\taotao-manage-sub\taotao-manage-web-sub\src\main\java\com\taotao\manage\web\bean\EasyUIResult.java
 E:\Java\workspace\taotao-manage-sub\taotao-manage-web-sub\src\main\java\com\taotao\manage\web\controller\ItemCatController.java
+E:\Java\workspace\taotao-manage-sub\taotao-manage-web-sub\src\main\java\com\taotao\manage\web\controller\ItemParamController.java
 E:\Java\workspace\taotao-manage-sub\taotao-manage-web-sub\src\main\java\com\taotao\manage\web\controller\PageController.java
 E:\Java\workspace\taotao-manage-sub\taotao-manage-web-sub\src\main\java\com\taotao\manage\web\controller\PicUploadController.java
 E:\Java\workspace\taotao-manage-sub\taotao-manage-web-sub\src\main\java\com\taotao\manage\web\controller\ItemController.java
+E:\Java\workspace\taotao-manage-sub\taotao-manage-web-sub\src\main\java\com\taotao\manage\web\controller\ItemDescController.java

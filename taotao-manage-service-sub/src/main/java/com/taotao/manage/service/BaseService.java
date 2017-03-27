@@ -101,8 +101,8 @@ public abstract class BaseService<T extends BasePojo> {
 	 * @return
 	 */
 	public T queryOne(T t) {
-		// T t = this.getMapper().selectOne(t);
-		T result = this.getMapper().select(t).get(0);
+		T result = this.getMapper().selectOne(t);
+//		T result = this.getMapper().select(t).get(0);
 		return result;
 	}
 

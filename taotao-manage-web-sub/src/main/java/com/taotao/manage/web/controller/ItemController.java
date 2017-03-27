@@ -26,12 +26,12 @@ public class ItemController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> saveItem(Item item,
-			@RequestParam("desc") String desc) {
+			@RequestParam("desc") String desc,@RequestParam("itemParams")String paramData) {
 		try {
 			if (LOGGER.isDebugEnabled()) {
 				LOGGER.debug("新增商品，传入的参数是：item = {},desc = {}", item, desc);
 			}
-			this.itemService.saveItem(item, desc);
+			this.itemService.saveItem(item, desc,paramData);
 			if (LOGGER.isDebugEnabled()) {
 				LOGGER.debug("新增商品成功！itemId = {}", item.getId());
 			}
@@ -57,6 +57,25 @@ public class ItemController {
 			PageInfo<Item> pageInfo = this.itemService.queryItemListByPage(page,rows);
 			EasyUIResult easyUIResult = new EasyUIResult(pageInfo.getTotal(), pageInfo.getList());
 			return ResponseEntity.ok().body(easyUIResult);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+	}
+	
+	/**
+	 * 商品更新
+	 * @param item
+	 * @param desc
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.PUT)
+	public ResponseEntity<Void> updateItem(Item item,@RequestParam("desc")String desc){
+		try {
+			this.itemService.updateItem(item,desc);
+			System.out.println(desc);
+			//204
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

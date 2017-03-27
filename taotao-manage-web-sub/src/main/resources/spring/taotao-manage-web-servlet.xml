@@ -8,7 +8,18 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<!-- 注解驱动 -->
-	<mvc:annotation-driven />
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<!-- jsonp跨域支持，返回String，乱码解决方案 -->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg index="0" value="UTF-8"></constructor-arg>
+			</bean>
+			<!-- jsonp跨域支持，通用的解决方案 -->
+			<bean class="com.taotao.manage.converter.CallbackMappingJackson2HttpMessageConverter">
+				<property name="callbackName" value="callback" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 
 	<!-- 配置扫描controller -->
 	<context:component-scan base-package="com.taotao.manage.web.controller" />
